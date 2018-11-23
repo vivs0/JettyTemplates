@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config" status="OFF" strict="true" >
+
+<Appenders>
+	<Appender name="STDOUT" type="Console">
+      <Layout type="PatternLayout" pattern="%d{HH:mm:ss} %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green, DEBUG=blue} %msg%n"/>
+	</Appender>
+	
+	<Appender type="Console" name="FLOW">
+      <Layout type="PatternLayout" pattern="%highlight{%-5level}{DEBUG=blue} - [%logger{36}] - %highlight{%msg%n}{DEBUG=RED}"/>
+    </Appender>
+
+
+</Appenders>
+
+  <Loggers>
+    <Logger name="org.springframework" level="OFF" additivity="false">
+    	<AppenderRef ref="STDOUT"/>
+    </Logger>
+    <Logger name="org.springframework.web" level="TRACE" additivity="false">
+    	<AppenderRef ref="STDOUT"/>
+    </Logger>  
+	<Logger name="org.b3ds.dicom" level="DEBUG" additivity="false">
+		<AppenderRef ref="STDOUT"/>
+	</Logger>
+	
+    <Root level="DEBUG">
+      <AppenderRef ref="STDOUT"/>
+    </Root>
+ 	
+  </Loggers>
+</Configuration>
